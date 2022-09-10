@@ -64,8 +64,8 @@ export class ListarRolesComponent implements OnInit {
     this.deleteProductsDialog = true;
   }
 
-editProduct(product: Product) {
-    this.item = { ...product };
+editItem(data:any) {
+    this.item = { ...data };
     this.genericDialog = true;
 }
 
@@ -75,16 +75,9 @@ deleteProduct(product: Product) {
     this.item = { ...product };
 }
 
-confirmDeleteSelected() {
-    this.deleteProductsDialog = false;
-    this.service.eliminar(this.item.idRol)
-    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
-    this.selectedProducts = [];
-}
-
 confirmDelete() {
-  this.deleteProductsDialog = false;
   this.service.eliminar(this.item.idRol).subscribe(data => {
+    this.deletegenericDialog = false;
     this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'Rol eliminado', life: 3000 });
     this.buscar({sortField:'idRol',sortOrder:'ASC', first:0, rows:this.cantidad});
   })
@@ -96,8 +89,32 @@ hideDialog() {
     this.submitted = false;
 }
 
-saveProduct() {
+saveItem() {
+  if(this.item.idRol){
+    this.item.userModificacion='admin'
 
+    this.service.modificar(this.item, this.item.idRol).subscribe( data =>{
+      this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'Rol modificado.', life: 3000 });
+      this.buscar({sortField:'idRol',sortOrder:'ASC', first:0, rows:this.cantidad});
+      this.hideDialog()
+    }, err =>{
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Rol creado.', life: 3000 });
+    })
+
+  }else{
+    this.item.userCreacion='admin'
+    this.item.estadoRol="ACTIVO"
+    this.service.agregar(this.item).subscribe( data =>{
+      this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'Rol creado.', life: 3000 });
+      this.buscar({sortField:'idRol',sortOrder:'ASC', first:0, rows:this.cantidad});
+      this.hideDialog()
+    }, err =>{
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Rol creado.', life: 3000 });
+    })
+  }
+  
+  
+  
 }
 
 mostrarDatos(item:any, props:any){

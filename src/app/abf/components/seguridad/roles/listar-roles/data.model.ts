@@ -5,13 +5,23 @@ export const model =[
         field:"idRol",
         relacion:false,
     },
+    
+    {
+        header:"Nombre",
+        field:"nombre",
+        relacion:false,
+    },
 
     {
         header:"Descripción",
         field:"descripcion",
         relacion:false,
     },
-    
+    {
+        header:"Estado",
+        field:"estadoRol",
+        relacion:false,
+    },    
     {
         header:"Fecha Creación",
         field:"fechaCreacion",
@@ -19,7 +29,7 @@ export const model =[
     },
     {
         header:"Usuario Creación",
-        field:"usuarioCreacion",
+        field:"userCreacion",
         relacion:false,
     },
     {
@@ -29,7 +39,7 @@ export const model =[
     },
     {
         header:"Usuario Modificación",
-        field:"usuarioModificacion",
+        field:"userModificacion",
         relacion:false,
     }
 ]

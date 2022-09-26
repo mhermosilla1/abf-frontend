@@ -81,7 +81,6 @@ confirmDelete() {
     this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'Rol eliminado', life: 3000 });
     this.buscar({sortField:'idRol',sortOrder:'ASC', first:0, rows:this.cantidad});
   })
-  
 }
 
 hideDialog() {
@@ -112,8 +111,6 @@ saveItem() {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Rol creado.', life: 3000 });
     })
   }
-  
-  
   
 }
 

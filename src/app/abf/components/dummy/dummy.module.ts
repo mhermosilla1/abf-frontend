@@ -18,7 +18,6 @@ import { DialogModule } from 'primeng/dialog';
 import { DummyRoutingModule } from './dummy-routing.module';
 import { ListarDummyComponent } from './listar-dummy/listar-dummy.component';
 
-
 @NgModule({
   declarations: [
     ListarDummyComponent

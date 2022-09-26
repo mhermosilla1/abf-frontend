@@ -2,10 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Product } from 'src/app/abf/api/product';
 import { LazyLoadEvent, MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
-import { ProductService } from 'src/app/abf/service/product.service';
 import { model } from './data.model';
 import { TiposDocumentosService } from 'src/app/abf/service';
-import { LISTA_CANTIDAD, mostrarDatos,CANTIDAD_INICIAL } from 'src/app/abf/utils';
+import { LISTA_CANTIDAD, mostrarDatos, CANTIDAD_INICIAL } from 'src/app/abf/utils';
 
 @Component({
   selector: 'app-listar-documentos',
@@ -54,7 +53,6 @@ export class ListarDocumentosComponent implements OnInit {
       ];
       this.buscar({sortField:'idTipoDocumento',sortOrder:'ASC', first:0, rows:this.cantidad});
   }
-
   openNew() {
     this.item = {};
     this.submitted = false;
@@ -63,27 +61,25 @@ export class ListarDocumentosComponent implements OnInit {
 
   deleteSelectedProducts() {
     this.deleteProductsDialog = true;
-}
+  }
 
-editProduct(product: Product) {
-    this.item = { ...product };
+editItem(data:any) {
+    this.item = { ...data };
     this.genericDialog = true;
 }
 
 deleteProduct(product: Product) {
+
     this.deletegenericDialog = true;
     this.item = { ...product };
 }
 
-confirmDeleteSelected() {
-    this.deleteProductsDialog = false;
-   this.lista= this.lista.filter(val => !this.selectedProducts.includes(val));
-    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
-    this.selectedProducts = [];
-}
-
 confirmDelete() {
-
+  this.service.eliminar(this.item.idTipoDocumento).subscribe(data => {
+    this.deletegenericDialog = false;
+    this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'TipoDocumento eliminado', life: 3000 });
+    this.buscar({sortField:'idTipoDocumento',sortOrder:'ASC', first:0, rows:this.cantidad});
+  })
 }
 
 hideDialog() {
@@ -91,8 +87,30 @@ hideDialog() {
     this.submitted = false;
 }
 
-saveProduct() {
+saveItem() {
+  if(this.item.idTipoDocumento){
+    this.item.userModificacion='admin'
 
+    this.service.modificar(this.item, this.item.idTipoDocumento).subscribe( data =>{
+      this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'Tipo Documento modificado.', life: 3000 });
+      this.buscar({sortField:'idTipoDocumento',sortOrder:'ASC', first:0, rows:this.cantidad});
+      this.hideDialog()
+    }, err =>{
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Tipo Documento creado.', life: 3000 });
+    })
+
+  }else{
+    this.item.userCreacion='admin'
+    this.item.estadoTipoDocumento="ACTIVO"
+    this.service.agregar(this.item).subscribe( data =>{
+      this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'Tipo Documento creado.', life: 3000 });
+      this.buscar({sortField:'idTipoDocumento',sortOrder:'ASC', first:0, rows:this.cantidad});
+      this.hideDialog()
+    }, err =>{
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Tipo Documento creado.', life: 3000 });
+    })
+  }
+  
 }
 
 mostrarDatos(item:any, props:any){
@@ -114,16 +132,15 @@ mostrarDatos(item:any, props:any){
     if(rows != 0) {
         this.loading=true;
         this.service.paginado(params).subscribe( (data:any)=>{
-           this.lista= data.lista;
+            this.lista= data.lista;
             this.total = data.total;
             this.loading = false;
           },err =>{
-           this.lista= [];
+            this.lista= [];
             this.total =0 ;
             this.loading = false;
           })
+        
     }
-   
   }
-
 }

@@ -27,6 +27,18 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
+                label: 'Parámetros',
+                items: [
+                    { label: 'Tipos de Documentos', icon: 'pi pi-fw pi-cog', routerLink: ['/tipos-documentos'] }
+                ]
+            },
+            {
+                label: 'Seguridad',
+                items: [
+                    { label: 'Roles', icon: 'pi pi-fw pi-cog', routerLink: ['/roles'] }
+                ]
+            },
+            {
                 label: 'Hierarchy',
                 items: [
                     {

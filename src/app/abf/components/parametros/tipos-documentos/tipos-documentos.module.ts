@@ -14,33 +14,31 @@ import { DropdownModule } from 'primeng/dropdown';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { DialogModule } from 'primeng/dialog';
-
 import { TiposDocumentosRoutingModule } from './tipos-documentos-routing.module';
 import { ListarDocumentosComponent } from './listar-documentos/listar-documentos.component';
-
 
 @NgModule({
   declarations: [
     ListarDocumentosComponent
   ],
   imports: [
-        CommonModule,
-        TableModule,
-        FileUploadModule,
-        FormsModule,
-        ButtonModule,
-        RippleModule,
-        ToastModule,
-        ToolbarModule,
-        RatingModule,
-        InputTextModule,
-        InputTextareaModule,
-        DropdownModule,
-        RadioButtonModule,
-        InputNumberModule,
-        DialogModule,
-        CommonModule,
-        TiposDocumentosRoutingModule
+    CommonModule,
+    TableModule,
+    FileUploadModule,
+    FormsModule,
+    ButtonModule,
+    RippleModule,
+    ToastModule,
+    ToolbarModule,
+    RatingModule,
+    InputTextModule,
+    InputTextareaModule,
+    DropdownModule,
+    RadioButtonModule,
+    InputNumberModule,
+    DialogModule,
+    CommonModule,
+    TiposDocumentosRoutingModule
   ]
 })
 export class TiposDocumentosModule { }

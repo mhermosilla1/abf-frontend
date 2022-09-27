@@ -18,7 +18,6 @@ export class ListarRolesComponent implements OnInit {
 
   deletegenericDialog: boolean = false;
 
-  
   deleteProductsDialog: boolean = false;
 
   lista: any[] = [];
@@ -142,7 +141,5 @@ mostrarDatos(item:any, props:any){
             this.loading = false;
           })
     }
-   
   }
-
 }

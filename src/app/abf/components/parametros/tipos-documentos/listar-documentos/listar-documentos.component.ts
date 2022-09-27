@@ -63,51 +63,51 @@ export class ListarDocumentosComponent implements OnInit {
     this.deleteProductsDialog = true;
   }
 
-editItem(data:any) {
+  editItem(data:any) {
     this.item = { ...data };
     this.genericDialog = true;
-}
+  }
 
-deleteProduct(product: Product) {
+  deleteProduct(product: Product) {
 
     this.deletegenericDialog = true;
     this.item = { ...product };
-}
+  }
 
-confirmDelete() {
-  this.service.eliminar(this.item.idTipoDocumento).subscribe(data => {
-    this.deletegenericDialog = false;
-    this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'TipoDocumento eliminado', life: 3000 });
-    this.buscar({sortField:'idTipoDocumento',sortOrder:'ASC', first:0, rows:this.cantidad});
-  })
-}
+  confirmDelete() {
+    this.service.eliminar(this.item.idTipoDocumento).subscribe(data => {
+      this.deletegenericDialog = false;
+      this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'Tipo documento eliminado', life: 3000 });
+      this.buscar({sortField:'idTipoDocumento',sortOrder:'ASC', first:0, rows:this.cantidad});
+    })
+  }
 
-hideDialog() {
+  hideDialog() {
     this.genericDialog = false;
     this.submitted = false;
-}
+  }
 
 saveItem() {
   if(this.item.idTipoDocumento){
     this.item.userModificacion='admin'
 
     this.service.modificar(this.item, this.item.idTipoDocumento).subscribe( data =>{
-      this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'Tipo Documento modificado.', life: 3000 });
+      this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'TipoDocumento modificado.', life: 3000 });
       this.buscar({sortField:'idTipoDocumento',sortOrder:'ASC', first:0, rows:this.cantidad});
       this.hideDialog()
     }, err =>{
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Tipo Documento creado.', life: 3000 });
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'TipoDocumento creado.', life: 3000 });
     })
 
   }else{
     this.item.userCreacion='admin'
     this.item.estadoTipoDocumento="ACTIVO"
     this.service.agregar(this.item).subscribe( data =>{
-      this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'Tipo Documento creado.', life: 3000 });
+      this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'TipoDocumento creado.', life: 3000 });
       this.buscar({sortField:'idTipoDocumento',sortOrder:'ASC', first:0, rows:this.cantidad});
       this.hideDialog()
     }, err =>{
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Tipo Documento creado.', life: 3000 });
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'TipoDocumento creado.', life: 3000 });
     })
   }
   
@@ -140,7 +140,6 @@ mostrarDatos(item:any, props:any){
             this.total =0 ;
             this.loading = false;
           })
-        
     }
   }
 }

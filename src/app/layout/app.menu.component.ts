@@ -47,7 +47,6 @@ export class AppMenuComponent implements OnInit {
                     { label: 'Mallas curriculares', icon: 'pi pi-fw pi-cog', routerLink: ['/mallascurriculares'] },
                     { label: 'Torneos', icon: 'pi pi-fw pi-cog', routerLink: ['/torneos'] },
                     { label: 'Inscripciones', icon: 'pi pi-fw pi-cog', routerLink: ['/inscripciones'] },
-                    { label: 'Temas', icon: 'pi pi-fw pi-cog', routerLink: ['/temas'] },
                     { label: 'Niveles', icon: 'pi pi-fw pi-cog', routerLink: ['/niveles'] },
                     { label: 'Calendario', icon: 'pi pi-fw pi-cog', routerLink: ['/Calendario'] },
                     { label: 'Fichas de torneos', icon: 'pi pi-fw pi-cog', routerLink: ['/fichastorneos'] }

@@ -12,7 +12,8 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
                     { path: '', loadChildren: () => import('./abf/components/dashboard/dashboard.module').then(m => m.DashboardModule) },
                     { path: 'dummy', loadChildren: () => import('./abf/components/dummy/dummy.module').then(m => m.DummyModule) },
                     { path: 'roles', loadChildren: () => import('./abf/components/seguridad/roles/roles.module').then(m => m.RolesModule) },
-                    { path: 'tipos-documentos', loadChildren: () => import('./abf/components/parametros/tipos-documentos/tipos-documentos.module').then(m => m.TiposDocumentosModule) }
+                    { path: 'tipos-documentos', loadChildren: () => import('./abf/components/parametros/tipos-documentos/tipos-documentos.module').then(m => m.TiposDocumentosModule) },
+                    { path: 'niveles', loadChildren: () => import('./abf/components/academico/niveles/niveles.module').then(m => m.NivelesModule) }
                 ],
             },
             { path: 'auth', loadChildren: () => import('./abf/components/auth/auth.module').then(m => m.AuthModule) },

@@ -5,8 +5,8 @@ import { environment } from "src/environments/environment";
 @Injectable({
   providedIn: 'root'
 })
-export class TemasService {
-  recursoBase =environment.URL_BASE+"temas/";
+export class NivelesService {
+  recursoBase =environment.URL_BASE+"niveles/";
 
   constructor(private http: HttpClient) { }
 

@@ -65,7 +65,8 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Materiales y préstamos',
                 items: [
-                    { label: 'Materiales', icon: 'pi pi-fw pi-cog', routerLink: ['/materiales'] }
+                    { label: 'Materiales', icon: 'pi pi-fw pi-cog', routerLink: ['/materiales'] },
+                    { label: 'Préstamos', icon: 'pi pi-fw pi-cog', routerLink: ['/prestamos'] }
                 ]
             },
             {

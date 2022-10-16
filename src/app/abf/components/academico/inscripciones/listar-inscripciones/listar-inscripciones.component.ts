@@ -3,16 +3,16 @@ import { Product } from 'src/app/abf/api/product';
 import { LazyLoadEvent, MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { model } from './data.model';
-import { TiposDocumentosService } from 'src/app/abf/service';
 import { LISTA_CANTIDAD, mostrarDatos, CANTIDAD_INICIAL } from 'src/app/abf/utils';
+import { InscripcionesService } from 'src/app/abf/service/inscripciones.service';
 
 @Component({
-  selector: 'app-listar-documentos',
-  templateUrl: './listar-documentos.component.html',
-  styleUrls: ['./listar-documentos.component.scss'],
+  selector: 'app-listar-inscripciones',
+  templateUrl: './listar-inscripciones.component.html',
+  styleUrls: ['./listar-inscripciones.component.scss'],
   providers: [MessageService]
 })
-export class ListarDocumentosComponent implements OnInit {
+export class ListarInscripcionesComponent implements OnInit {
   private lastTableLazyLoadEvent: LazyLoadEvent | undefined;
   genericDialog: boolean = false;
 
@@ -40,9 +40,9 @@ export class ListarDocumentosComponent implements OnInit {
   rowsPerPageOptions = LISTA_CANTIDAD;
 
   @ViewChild('dt', { static: false }) dt: any;
-
+  
   constructor(private messageService: MessageService,
-    private service:TiposDocumentosService) { }
+    private service:InscripcionesService) { }
 
   ngOnInit(): void {
     this.cols = model;
@@ -51,7 +51,7 @@ export class ListarDocumentosComponent implements OnInit {
           { label: 'LOWSTOCK', value: 'lowstock' },
           { label: 'OUTOFSTOCK', value: 'outofstock' }
       ];
-      this.buscar({sortField:'idTipoDocumento',sortOrder:'ASC', first:0, rows:this.cantidad});
+      this.buscar({sortField:'idInscripcion',sortOrder:'ASC', first:0, rows:this.cantidad});
   }
   openNew() {
     this.item = {};
@@ -67,16 +67,18 @@ export class ListarDocumentosComponent implements OnInit {
     this.item = { ...data };
     this.genericDialog = true;
   }
+
   deleteProduct(product: Product) {
+
     this.deletegenericDialog = true;
     this.item = { ...product };
   }
 
   confirmDelete() {
-    this.service.eliminar(this.item.idTipoDocumento).subscribe(data => {
+    this.service.eliminar(this.item.idInscripcion).subscribe(data => {
       this.deletegenericDialog = false;
-      this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'Tipo documento eliminado', life: 3000 });
-      this.buscar({sortField:'idTipoDocumento',sortOrder:'ASC', first:0, rows:this.cantidad});
+      this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'Nivel eliminado', life: 3000 });
+      this.buscar({sortField:'idInscripcion',sortOrder:'ASC', first:0, rows:this.cantidad});
     })
   }
 
@@ -85,35 +87,35 @@ export class ListarDocumentosComponent implements OnInit {
     this.submitted = false;
   }
 
-saveItem() {
-  if(this.item.idTipoDocumento){
-    this.item.userModificacion='admin'
-
-    this.service.modificar(this.item, this.item.idTipoDocumento).subscribe( data =>{
-      this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'TipoDocumento modificado.', life: 3000 });
-      this.buscar({sortField:'idTipoDocumento',sortOrder:'ASC', first:0, rows:this.cantidad});
-      this.hideDialog()
-    }, err =>{
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'TipoDocumento creado.', life: 3000 });
-    })
-
-  }else{
-    this.item.userCreacion='admin'
-    this.item.estadoTipoDocumento="ACTIVO"
-    this.service.agregar(this.item).subscribe( data =>{
-      this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'TipoDocumento creado.', life: 3000 });
-      this.buscar({sortField:'idTipoDocumento',sortOrder:'ASC', first:0, rows:this.cantidad});
-      this.hideDialog()
-    }, err =>{
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'TipoDocumento creado.', life: 3000 });
-    })
-  }
+  saveItem() {
+    if(this.item.idInscripcion){
+      this.item.userModificacion='admin'
   
-}
+      this.service.modificar(this.item, this.item.idInscripcion).subscribe( data =>{
+        this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'Nivel modificado.', life: 3000 });
+        this.buscar({sortField:'idInscripcion',sortOrder:'ASC', first:0, rows:this.cantidad});
+        this.hideDialog()
+      }, err =>{
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Nivel creado.', life: 3000 });
+      })
+  
+    }else{
+      this.item.userCreacion='admin'
+      this.item.estadoTipoDocumento="ACTIVO"
+      this.service.agregar(this.item).subscribe( data =>{
+        this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'Nivel creado.', life: 3000 });
+        this.buscar({sortField:'idInscripcion',sortOrder:'ASC', first:0, rows:this.cantidad});
+        this.hideDialog()
+      }, err =>{
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Nivel creado.', life: 3000 });
+      })
+    }
+    
+  }
 
-mostrarDatos(item:any, props:any){
-  return mostrarDatos(item,props)
-}
+  mostrarDatos(item:any, props:any){
+    return mostrarDatos(item,props)
+  }
 
   buscar(even:any){
     console.log(even);
@@ -122,7 +124,7 @@ mostrarDatos(item:any, props:any){
     let params ={
         cantidad:rows,
         pagina:first/this.cantidad,
-        orderBy:sortField?sortField:"idTipoDocumento",
+        orderBy:sortField?sortField:"idInscripcion",
         orderDir:sortOrder>0?"ASC":"DESC",
         filtros: {
         }
@@ -138,7 +140,7 @@ mostrarDatos(item:any, props:any){
             this.total =0 ;
             this.loading = false;
           })
-          }
+    }
   }
-  
+
 }

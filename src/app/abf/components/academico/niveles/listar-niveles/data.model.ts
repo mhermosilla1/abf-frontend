@@ -14,14 +14,19 @@ export const model =[
 
     {
         header:"Descripción",
-        field:"descripcion",
+        field:"descripcionNivel",
         relacion:false,
     },
     {
         header:"Estado",
-        field:"estadoRol",
+        field:"estado",
         relacion:false,
-    },    
+    }, 
+    {
+        header:"IdExamen",
+        field:"IdExamen",
+        relacion:false,
+    },   
     {
         header:"Fecha Creación",
         field:"fechaCreacion",

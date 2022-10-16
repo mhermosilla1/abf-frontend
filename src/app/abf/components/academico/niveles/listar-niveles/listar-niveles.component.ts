@@ -77,7 +77,7 @@ export class ListarNivelesComponent implements OnInit {
   confirmDelete() {
     this.service.eliminar(this.item.idNivel).subscribe(data => {
       this.deletegenericDialog = false;
-      this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'Tipo documento eliminado', life: 3000 });
+      this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'Nivel eliminado', life: 3000 });
       this.buscar({sortField:'idNivel',sortOrder:'ASC', first:0, rows:this.cantidad});
     })
   }
@@ -103,11 +103,11 @@ saveItem() {
     this.item.userCreacion='admin'
     this.item.estadoTipoDocumento="ACTIVO"
     this.service.agregar(this.item).subscribe( data =>{
-      this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'TipoDocumento creado.', life: 3000 });
+      this.messageService.add({ severity: 'success', summary: 'Exito', detail: 'Nivel creado.', life: 3000 });
       this.buscar({sortField:'idNivel',sortOrder:'ASC', first:0, rows:this.cantidad});
       this.hideDialog()
     }, err =>{
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'TipoDocumento creado.', life: 3000 });
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Nivel creado.', life: 3000 });
     })
   }
   

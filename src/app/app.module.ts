@@ -12,6 +12,7 @@ import { IconService } from './abf/service/icon.service';
 import { NodeService } from './abf/service/node.service';
 import { PhotoService } from './abf/service/photo.service';
 
+
 @NgModule({
     declarations: [
         AppComponent, NotfoundComponent

@@ -3,3 +3,4 @@ export { RolesService } from "./roles.service";
 export { DummyService } from "./dummy.service";
 export { NivelesService } from "./niveles.service";
 export { TorneosService } from "./torneos.service";
+export { CursosService } from "./cursos.service";

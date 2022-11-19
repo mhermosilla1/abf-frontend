@@ -43,13 +43,14 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     { label: 'Asistencia', icon: 'pi pi-fw pi-cog', routerLink: ['/asistencia'] },
                     { label: 'Cursos', icon: 'pi pi-fw pi-cog', routerLink: ['/cursos'] },
-                    { label: 'Evaluaciones', icon: 'pi pi-fw pi-cog', routerLink: ['/Evaluaciones'] },
-                    { label: 'Mallas curriculares', icon: 'pi pi-fw pi-cog', routerLink: ['/mallascurriculares'] },
+                    { label: 'Evaluaciones', icon: 'pi pi-fw pi-cog', routerLink: ['/evaluaciones'] },
+                    { label: 'Mallas', icon: 'pi pi-fw pi-cog', routerLink: ['/mallas'] },
                     { label: 'Torneos', icon: 'pi pi-fw pi-cog', routerLink: ['/torneos'] },
                     { label: 'Inscripciones', icon: 'pi pi-fw pi-cog', routerLink: ['/inscripciones'] },
                     { label: 'Niveles', icon: 'pi pi-fw pi-cog', routerLink: ['/niveles'] },
-                    { label: 'Calendario', icon: 'pi pi-fw pi-cog', routerLink: ['/Calendario'] },
-                    { label: 'Fichas de torneos', icon: 'pi pi-fw pi-cog', routerLink: ['/fichastorneos'] }
+                    { label: 'Calendario', icon: 'pi pi-fw pi-cog', routerLink: ['/calendario'] },
+                    { label: 'Fichas de torneos', icon: 'pi pi-fw pi-cog', routerLink: ['/fichastorneos'] },
+                    { label: 'Agradecimientos', icon: 'pi pi-fw pi-cog', routerLink: ['/fichastorneos'] }
                 ]
             },
             {

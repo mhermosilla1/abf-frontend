@@ -96,7 +96,7 @@ saveItem() {
       this.buscar({sortField:'idNivel',sortOrder:'ASC', first:0, rows:this.cantidad});
       this.hideDialog()
     }, err =>{
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Nivel creado.', life: 3000 });
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Nivel no fue creado.', life: 3000 });
     })
 
   }else{
@@ -107,7 +107,7 @@ saveItem() {
       this.buscar({sortField:'idNivel',sortOrder:'ASC', first:0, rows:this.cantidad});
       this.hideDialog()
     }, err =>{
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Nivel creado.', life: 3000 });
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Nivel no fue creado.', life: 3000 });
     })
   }
   

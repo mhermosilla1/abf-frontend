@@ -104,7 +104,7 @@ export class ListarCursosComponent implements OnInit {
         this.buscar({sortField:'idCurso',sortOrder:'ASC', first:0, rows:this.cantidad});
         this.hideDialog()
       }, err =>{
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Curso creado.', life: 3000 });
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Curso no fue creado.', life: 3000 });
       })
     }
     
